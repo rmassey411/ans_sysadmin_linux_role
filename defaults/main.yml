@@ -1,0 +1,23 @@
+---
+# defaults file for ans_linux_misc_role
+# filesystem:
+#   - name: u01
+#     size: 10g
+#     path: "/u01"
+# directories:
+#   - path: "/u01/logs"
+#     user: "appuser"
+#     group: "appgroup"
+#     perms: "0750"
+#   - path: "/u01/scripts"
+#     user: "appuser"
+#     group: "appgroup"
+#     perms: "0750"
+# symlinks:
+#   - src: "/u01/logs"
+#     dst: "/var/log/myapp"
+#   - src: "/u01/scripts"
+#     dst: "/usr/local/app"
+# packages:
+#   - pkg_name1
+#   - pkg_name2

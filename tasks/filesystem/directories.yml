@@ -1,0 +1,10 @@
+---
+# tasks file for ans_linux_misc_role
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "{{ item.user }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.perms }}"
+  with_items: "{{ directories }}"

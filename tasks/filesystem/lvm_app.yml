@@ -1,0 +1,32 @@
+---
+# tasks file for ans_linux_misc_role
+- name: Create directories for logical volumes
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: '0755'
+  with_items: "{{ filesystem }}"
+
+- name: Create logical volumes
+  community.general.lvol:
+    vg: app
+    lv: "{{ item.name }}"
+    size: "{{ item.size }}"
+  with_items: "{{ filesystem }}"
+
+- name: Write filesystems to logical volumes
+  community.general.filesystem:
+    fstype: xfs
+    dev: "/dev/app/{{ item.name }}"
+  with_items: "{{ filesystem }}"
+
+- name: Mount logical volumes
+  ansible.posix.mount:
+    path: "{{ item.path }}"
+    src: "/dev/mapper/app-{{ item.name }}"
+    fstype: xfs
+    opts: defaults
+    state: mounted
+  with_items: "{{ filesystem }}"

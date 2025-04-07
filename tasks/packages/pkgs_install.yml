@@ -1,0 +1,8 @@
+---
+# tasks file for ans_linux_misc_role
+- name: Install required packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - "{{ packages }}"

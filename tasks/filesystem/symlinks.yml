@@ -1,0 +1,8 @@
+---
+# tasks file for ans_linux_misc_role
+- name: Create symlinks
+  ansible.builtin.file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dst }}"
+    state: link
+  with_items: "{{ symlinks }}"
