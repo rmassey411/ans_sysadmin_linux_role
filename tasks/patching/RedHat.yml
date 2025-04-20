@@ -1,10 +1,6 @@
 ---
-# Need to use vars from ../../vars/patching/RedHat.yml
-# - name: Create directory for disabled repos
-#   ansible.builtin.file:
-#     name: "{{ disabled_repos_dir }}"
-#     mode: 0775
-#     state: directory
+- name: Include OS-specific variables.
+  include_vars: "patching/{{ ansible_os_family }}.yml"
 
 # - name: Disable 3rd party repo files
 #   ansible.builtin.shell: 
@@ -12,7 +8,7 @@
  
 - name: List all repository files
   ansible.builtin.find:
-    paths: "{{ yum_repo_dir }}"
+    paths: "{{ repo_dir }}"
   register: repo_files
 
 - name: Disable repos
@@ -20,7 +16,7 @@
     path: "{{ item.path }}"
     regexp: '^enabled[= ]'
     line: 'enabled = 0'
-  when: 'redhat_repo_file not in item.path '
+  when: 'repo_file not in item.path '
   with_items: "{{ repo_files.files }}"
 
 - name: Clear the yum cache
