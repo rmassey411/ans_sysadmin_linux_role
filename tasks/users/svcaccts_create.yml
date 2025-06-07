@@ -1,0 +1,25 @@
+---
+- name: Include variables for service accounts
+  include_vars: users/svc_accts.yml
+
+- name: Create user
+  ansible.builtin.user:
+    name: "{{ item.username }}"
+    comment: "{{ item.comment }}"
+    uid: "{{ item.uid }}"
+    password_expire_max: 99999
+    state: present
+    create_home: yes
+  loop: "{{ svc_accts | selectattr('username', 'equalto', account_name) | list }}"
+
+- name: Set user's keys to user_keys
+  set_fact:
+    user_keys: "{{ svc_accts | selectattr('username', 'equalto', account_name) | map(attribute='keys') | list | first }}"
+
+- name: Add authorized_keys for user
+  ansible.posix.authorized_key:
+    user: "{{ account_name }}"
+    key: "{{ item }}"
+    state: present
+  loop: "{{ user_keys | default([]) }}"
+  when: user_keys is defined and user_keys | length > 0

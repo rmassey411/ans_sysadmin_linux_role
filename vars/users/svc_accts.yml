@@ -1,0 +1,22 @@
+---
+svc_accts:
+  - username: "user1"
+    comment: "User 1"
+    uid: 5001
+    keys: 
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user1"
+  - username: "user2"
+    comment: "User 2"
+    uid: 5002
+    keys: 
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user2"
+  - username: "user3"
+    comment: "User 3"
+    uid: 5003
+    keys: 
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user3"
+  - username: "user4"
+    comment: "User 4"
+    uid: 5004
+    keys: 
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user4"
