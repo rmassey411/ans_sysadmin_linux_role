@@ -1,0 +1,9 @@
+---
+- name: copy sudoers file
+  ansible.builtin.copy:
+    src: "sudoers/{{ group_type | lower }}/managed-{{ managed_by | lower }}/{{ which_group | lower }}"
+    dest: "/etc/sudoers.d/{{ which_group | lower }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0640'
+    validate: /usr/sbin/visudo -csf %s
