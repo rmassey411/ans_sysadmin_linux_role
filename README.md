@@ -13,8 +13,8 @@ Requirements
 
 Dependencies
 ------------
-[ansible.posix](https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html)
-[community.general](https://docs.ansible.com/ansible/latest/collections/community/general/index.html)
+- [ansible.posix](https://docs.ansible.com/ansible/latest/collections/ansible/posix/index.html)
+- [community.general](https://docs.ansible.com/ansible/latest/collections/community/general/index.html)
 
 
 ## Filesystem
