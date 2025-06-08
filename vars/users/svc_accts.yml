@@ -1,22 +1,22 @@
 ---
 svc_accts:
-  - username: "user1"
-    comment: "User 1"
+  - username: "app1-mgr"
+    comment: "App 1 Manager"
     uid: 5001
     keys: 
-      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user1"
-  - username: "user2"
-    comment: "User 2"
+      - "ssh-ed25519 JH7J0H45SZFJQK5DTFTE1RCVD1NLFWB16QAQKIJG98TA0IMJCLOUMWMDURKVA36EI14YJ app1-mgr"
+  - username: "app1-wrk"
+    comment: "App 1 Worker"
     uid: 5002
     keys: 
-      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user2"
-  - username: "user3"
-    comment: "User 3"
+      - "ssh-ed25519 CBZD8NNGSAMYPE7C74W0XOE6Y5ZACJ467S4UGWVYOY0UX552D63NJTJZ5RCYS59BZFEMV app1-wrk"
+  - username: "app2-mgr"
+    comment: "App 2 Manager"
     uid: 5003
     keys: 
-      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user3"
-  - username: "user4"
-    comment: "User 4"
+      - "ssh-ed25519 W9BZ1UMJKOSZOSZL8KDCG9LWE94V4B7FUHHP87MY4D0XKBRUOY03MQ58IRJGVNLG26UP3 app2-mgr"
+  - username: "app2-wrk"
+    comment: "App 2 Worker"
     uid: 5004
     keys: 
-      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpt0tV2Ud2UIgNfL2qRSjPeXva1lVdh9szZVks/khQj user4"
+      - "ssh-ed25519 U5FKCGZN63XNBISRE59MB58SRBJWCNCBSF3NW0X762YUHJYC0ZZRNI283UAQE5RNVI49V app2-wrk"

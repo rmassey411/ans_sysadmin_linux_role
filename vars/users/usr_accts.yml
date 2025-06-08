@@ -1,0 +1,22 @@
+---
+user_accts:
+  - username: "user1"
+    comment: "User 1"
+    uid: 6001
+    keys: 
+      - "ssh-ed25519 JH7J0H45SZFJQK5DTFTE1RCVD1NLFWB16QAQKIJG98TA0IMJCLOUMWMDURKVA36EI14YJ user1"
+  - username: "user2"
+    comment: "User 2"
+    uid: 6002
+    keys: 
+      - "ssh-ed25519 CBZD8NNGSAMYPE7C74W0XOE6Y5ZACJ467S4UGWVYOY0UX552D63NJTJZ5RCYS59BZFEMV user2"
+  - username: "user3"
+    comment: "User 3"
+    uid: 6003
+    keys: 
+      - "ssh-ed25519 W9BZ1UMJKOSZOSZL8KDCG9LWE94V4B7FUHHP87MY4D0XKBRUOY03MQ58IRJGVNLG26UP3 user3"
+  - username: "user4"
+    comment: "User 4"
+    uid: 6004
+    keys: 
+      - "ssh-ed25519 U5FKCGZN63XNBISRE59MB58SRBJWCNCBSF3NW0X762YUHJYC0ZZRNI283UAQE5RNVI49V user4"
