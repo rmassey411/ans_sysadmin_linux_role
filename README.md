@@ -25,10 +25,7 @@ Role Variables
 | ------------------- | ------------------- | --------------------------------------------------------------- |
 | filesystem          | N/A                 | dictionary of names, sizes and paths                            |
 | directories         | N/A                 | dictionary of paths, user, groups and permissions               |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
+| symlinks            | N/A                 | N/A                                                             |
 
 
 Example Playbook
@@ -64,16 +61,28 @@ Role Variables
 
 | Variable            | Choices/Defaults    | Purpose/Description                                             |
 | ------------------- | ------------------- | --------------------------------------------------------------- |
-| filesystem          | N/A                 | dictionary of names, sizes and paths                            |
-| directories         | N/A                 | dictionary of paths, user, groups and permissions               |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-
+| packages            | N/A                 | list of packages to be installed                                |
 
 Example Playbook
 ----------------
+
+```yaml
+---
+- name: Install packages
+  hosts: all #should force host to be specified instead of all keyword so mistake isnt made
+  gather_facts: no
+
+  vars:
+    packages:
+      - podman
+      - httpd
+
+  tasks:
+    - name: Install packages
+      ansible.builtin.include_role:
+        name: ans_sysadmin_linux__role
+        tasks_from: "packages/pkgs_install.yml"
+```
 
 ## Patching
 Role Variables
