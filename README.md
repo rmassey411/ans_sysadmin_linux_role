@@ -96,16 +96,35 @@ Role Variables
 
 | Variable            | Choices/Defaults    | Purpose/Description                                             |
 | ------------------- | ------------------- | --------------------------------------------------------------- |
-| filesystem          | N/A                 | dictionary of names, sizes and paths                            |
-| directories         | N/A                 | dictionary of paths, user, groups and permissions               |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-| N/A                 | N/A                 | N/A                                                             |
-
+| group_type          | ad or local         | determine if it's an AD or local group                          |
+| managed_by          | central or self     | is the server managed centrally or by the owner                 |
+| which_group         | N/A                 | what is the group's name                                        |
 
 Example Playbook
 ----------------
+
+```yaml
+---
+- name: Create sudoers file
+  hosts: all #should force host to be specified instead of all keyword so mistake isnt made
+  gather_facts: no
+
+  vars:
+    group_type: "ad"
+    managed_by: "self"
+    which_group: "dept-team"
+
+  tasks:
+    - name: Include role to create sudoers file
+      ansible.builtin.include_role:
+        name: ans_sysadmin_linux_role
+        tasks_from: sudoers/sudoers_create.yml
+      vars:
+          group_type: ""
+          which_group: ""
+          managed_by: ""
+```
+
 
 ## Users
 Role Variables
@@ -152,5 +171,4 @@ Example Playbook
         tasks_from: "users/usraccts_create.yml"
       vars:
         account: "{{ account_name }}"
-
 ```
