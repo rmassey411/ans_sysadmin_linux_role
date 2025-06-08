@@ -25,34 +25,43 @@ Role Variables
 | ------------------- | ------------------- | --------------------------------------------------------------- |
 | filesystem          | N/A                 | dictionary of names, sizes and paths                            |
 | directories         | N/A                 | dictionary of paths, user, groups and permissions               |
-| symlinks            | N/A                 | N/A                                                             |
+| symlinks            | N/A                 | dictionary of paths                                             |
 
 
 Example Playbook
 ----------------
-How to use role in playbook w/ separate var file
 
-site.yml
-  - hosts: servers
-    vars_files:
-      - filesystem.yml
-    roles:
-      - ans_linux_filesystem_role
+```yaml
+---
+- name: Setup filesystem
+  hosts: all
+  gather_facts: yes
 
-filesystem.yml
-  filesystem:
-    - name: u01
-      size: 10g
-      path: "/u01"
-  directories:
-    - path: "/u01/logs"
-      user: "appuser"
-      group: "appgroup"
-      perms: "0750"
-    - path: "/u01/scripts"
-      user: "appuser"
-      group: "appgroup"
-      perms: "0750"
+  vars:
+    filesystem:
+      - name: "u01"
+        size: 5g
+        path: "/u01"
+      - name: "var_lib_containers"
+        size: 5g
+        path: "/var/lib/containers"
+    directories:
+      - path: "/u01/containers/storage"
+        user: "user1"
+        group: "users"
+        perms: "0750"
+
+  tasks:
+    - name: Setup lvm
+      ansible.builtin.include_role:
+        name: ans_sysadmin_linux_role
+        tasks_from: "filesystem/lvm_app.yml"
+
+    - name: Setup directories
+      ansible.builtin.include_role:
+        name: ans_sysadmin_linux_role
+        tasks_from: "filesystem/directories.yml"
+```
 
 
 ## Packages
